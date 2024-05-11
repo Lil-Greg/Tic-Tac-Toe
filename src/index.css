@@ -17,6 +17,19 @@ body {
   background-color: #fff;
 }
 
+form{
+  display: inline-block;
+}
+.start h1{
+  text-align: center;
+}
+.start .buttons button{
+  border-radius: 10rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
 .container {
   overflow: hidden;
   display: flex;
@@ -26,4 +39,8 @@ body {
   width: 100%;
   padding: 20px;
   height: 100%;
+}
+.player-turn{
+  border: 3px solid #75b34c;
+  padding: 0.25rem;
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import './TicTacToe.sass';
-import CoolModal from './Modal';
+import './TicTacToe.scss';
 import { Board } from './Board';
 
 type BoardArray = Array<Array<string | null>>
@@ -26,12 +25,13 @@ export const TicTacToe = () => {
     // All of the cells are null
 
     const [board, setBoard] = useState<BoardArray>(initialBoard);
-    const [player, setPlayer] = useState<string>("X");
+    const [player1, setPlayer1] = useState<string>("X");
     const [winner, setWinner] = useState<string | null>(null);
     const [isNoWinner, setIsNoWinner] = useState<boolean>(false);
 
     const checkWinner = (board: BoardArray): string | null => {
         const lines = [
+            // board[row][cell], board[0][0] = 1st row, 1st column
             // Rows
             [board[0][0], board[0][1], board[0][2]],
             [board[1][0], board[1][1], board[1][2]],
@@ -42,7 +42,7 @@ export const TicTacToe = () => {
             [board[0][2], board[1][2], board[2][2]],
             // Diagonal
             [board[0][0], board[1][1], board[2][2]],
-            [board[0][2], board[1][1], board[2][2]],
+            [board[0][2], board[1][1], board[2][0]],
         ]
         for (const line of lines) {
             if (line[0] && line[0] === line[1] && line[1] === line[2]) {
@@ -59,12 +59,12 @@ export const TicTacToe = () => {
         }
         const updatedPlayerBoard = board.map((newRow, rowIndex) =>
             newRow.map((cell, cellIndex) =>
-                rowIndex === row && cellIndex === col ? player : cell));
+                rowIndex === row && cellIndex === col ? player1 : cell));
         setBoard(updatedPlayerBoard);
         // Check Winner
         const newWinner = (checkWinner(updatedPlayerBoard));
         setWinner(newWinner);
-        setPlayer('X')
+        setPlayer1('X')
 
         // No Winner
         // iterated through both array rows to check if the cell has null value
@@ -92,12 +92,10 @@ export const TicTacToe = () => {
 
     const restartGame = () => {
         setBoard(initialBoard);
-        setPlayer("X");
+        setPlayer1("X");
         setWinner(null);
         setIsNoWinner(false);
     }
-
-    // Attempting to Add a Second Player
 
     return (
         <div className="game">
@@ -106,7 +104,6 @@ export const TicTacToe = () => {
             {winner && <p>{winner === "X" ? "You Win" : "Computer Wins"}</p>}
             {isNoWinner && <p>No One Wins</p>}
             <button className="reset" type='button' onClick={() => restartGame()}>Reset</button>
-            <CoolModal />
         </div>
     )
 }

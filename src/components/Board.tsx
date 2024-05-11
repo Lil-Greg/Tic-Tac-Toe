@@ -1,4 +1,4 @@
-import './TicTacToe.sass'
+import './TicTacToe.scss'
 
 type BoardProps = {
     board: Array<Array<string | null>>,
