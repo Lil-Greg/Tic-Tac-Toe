@@ -17,10 +17,10 @@ export const TicTacToePvp = () => {
     const [winner, setWinner] = useState<string | null>(null);
     const [isNoWinner, setIsNoWinner] = useState<boolean>(false);
     const [winningCells, setWinningCells] = useState<Array<string | number> | undefined>(undefined);
-    const [p1Name, setP1Name] = useState<Array<string | null> | null>(null);
+    const [p1Name, setP1Name] = useState<string | null>(null);
     const [p2Name, setP2Name] = useState<string | number | null>(null);
-    const user1Ref = useRef(null);
-    const user2Ref = useRef(null);
+    const user1Ref = useRef<HTMLInputElement>(null);
+    const user2Ref = useRef<HTMLInputElement>(null);
 
     const checkWinner = (board: BoardArray): string | null => {
         const lines = [

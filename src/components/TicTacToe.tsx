@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './TicTacToe.scss';
 import { Board } from './Board';
 

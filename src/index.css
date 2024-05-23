@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  /* You can define custom CSS variables here if needed */
-}
-
 body {
   height: 100vh;
   width: 100%;
